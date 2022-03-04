@@ -22,10 +22,24 @@ services:
   cadvisor:
     image: google/cadvisor
     container_name: cadvisor
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    depends_on:
+      - web
+    command:
+      - '-port=8081'
     expose:
       - 8081
     ports:
-      - "8005:8081"
+      - "8081:8081"
     networks:
       - monitoring
 
