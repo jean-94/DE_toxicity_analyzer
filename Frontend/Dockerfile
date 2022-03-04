@@ -10,5 +10,5 @@ RUN pip install requests
 
 COPY * ./
 
-EXPOSE 5000
+EXPOSE 5001
 CMD ["flask", "run"]
