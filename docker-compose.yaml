@@ -33,6 +33,7 @@ services:
 
   alertmanager:
     image: prom/alertmanager:latest
+    container_name: alertmanager
     ports:
       - '9091:9091'
     volumes:
