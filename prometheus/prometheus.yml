@@ -19,13 +19,10 @@ alerting:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: 'model'
+  - job_name: 'cadvisor'
+    scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:5000']
-
-  - job_name: 'web'
-    static_configs:
-      - targets: ['localhost:5001']
+      - targets: ['cadvisor:8081']
 
   - job_name: 'prometheus'
     scrape_interval: 10s

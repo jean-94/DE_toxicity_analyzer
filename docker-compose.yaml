@@ -8,8 +8,6 @@ services:
       - 5000
     ports:
       - "5000:5000"
-    networks:
-      - monitoring
 
   web:
     build:
@@ -20,6 +18,14 @@ services:
       - 5001
     ports:
       - "5001:5000"
+
+  cadvisor:
+    image: google/cadvisor
+    container_name: cadvisor
+    expose:
+      - 8081
+    ports:
+      - "8005:8081"
     networks:
       - monitoring
 
