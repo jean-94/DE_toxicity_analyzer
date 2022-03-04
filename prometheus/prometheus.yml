@@ -19,11 +19,15 @@ alerting:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: "model"
+  - job_name: 'model'
     static_configs:
-      - targets: ["model:5000"]
-  - job_name: "flask_app"
+      - targets: ['model:5000']
+      
+  - job_name: 'web'
     static_configs:
-      - targets: ["web:5001"]
+      - targets: ['web:5001']
 
-
+  - job_name: 'prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['localhost:9090']
