@@ -24,6 +24,6 @@ scrape_configs:
       - targets: ["http://model:5000"]
   - job_name: "flask_app"
     static_configs:
-      - targets: ["http://web:5001"]
+      - targets: ["http://web:5000"]
 
 
