@@ -1,11 +1,10 @@
-version : '3.7'
-
+version: '3.7'
 
 services:
   model:
     build: ./Backend
     container_name: model
-    ports: 
+    ports:
       - "5000:5000"
 
   web:
@@ -15,8 +14,8 @@ services:
     container_name: web
     ports:
       - "5001:5000"
-    
-   prometheus:
+
+  prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: always
@@ -26,13 +25,13 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./prometheus/rules.yml:/etc/prometheus/rules.yml
     depends_on:
-      - react-project
+      - web
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
       - '9090:9090'
-   
-   alertmanager:
+
+  alertmanager:
     image: prom/alertmanager:latest
     ports:
       - '9091:9091'
