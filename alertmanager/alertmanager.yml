@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'mailAlerts'
+
+receivers:
+- name: 'mailAlerts'
+  email_configs:
+  - to: projettoxic@gmail.com
+    from: projettoxic@gmail.com
+    smarthost: smtp.gmail.com:587
+    auth_username: projettoxic@gmail.com
+    auth_identity: projettoxic@gmail.com
+    auth_password: horddxcrgjqymclu
+    send_resolved: true
