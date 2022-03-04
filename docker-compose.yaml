@@ -18,6 +18,8 @@ services:
       - 5001
     ports:
       - "5001:5001"
+    networks:
+      - monitoring
 
   cadvisor:
     image: google/cadvisor
