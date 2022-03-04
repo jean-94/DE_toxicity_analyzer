@@ -6,6 +6,7 @@ ENV FLASK_RUN_HOST=0.0.0.0
 
 RUN apt-get update
 RUN pip install flask
+RUN pip install requests
 
 COPY * ./
 
