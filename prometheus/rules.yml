@@ -1,0 +1,28 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighCPUusage
+        expr: avg(irate(node_cpu_seconds_total{mpde="idle"}[1m]) *100 )< 80
+        for: 30s
+        labels:
+            severity: warning
+        annotations:
+            summary: High CPU usage on {{ $labels.instance}}
+            description: " {{$labels.instance}} has a value of (current:value: {{$value}}s)"
+      - alert: InstanceDown
+        expr: up == 0
+        for: 20s
+        labels:
+            severity: critical
+        annotations:
+            summary: Prometheus target missing (instance {{ $labels.instance }})
+            description: "{{$labels.instance}} is offline or has been terminated"
+      - alert: HostAlmostOutOfMemory
+        expr: (sum(container_memory_working_set_bytes{name!=""}) BY (instance, name) / sum(container_spec_memory_limit_bytes > 0) BY (instance, name) * 100) > 80
+        for: 1m
+        labels:
+            severity: warning
+        annotations:
+            summary: Host is almost out of memory (instance {{ $labels.instance }})
+            description: "80% of memory is used"
+ 
