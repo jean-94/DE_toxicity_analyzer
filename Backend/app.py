@@ -5,10 +5,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return 'status code = 200'
+    return 'Backend is running.'
 
-@app.route('/mean', methods = ['GET'])
-def mean():
+@app.route('/toxic', methods = ['GET'])
+def toxic():
     values_str = request.args.get('values', type=str)
     if values_str is Empty:
         return 'Error'
