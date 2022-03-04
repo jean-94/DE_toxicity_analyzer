@@ -79,8 +79,6 @@ services:
   grafana:
     image: grafana/grafana:4.6.2
     container_name: grafana
-    volumes:
-      - grafana-data:/var/lib/grafana
     depends_on:
       - prometheus
     expose:
