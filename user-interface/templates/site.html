@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Toxicity Analyzer</title>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<style>
+    .main {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        
+        align-items:center;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <textarea id="speech" cols="30" rows="10"></textarea>
+        <br>
+        <button id="submit-button" onclick=submit()>Submit</button>
+        <br>
+        <p id="output"></p>
+    </div>
+
+
+    <script>
+        function submit() {
+            let input_speech = document.getElementById('speech');
+            let speech = input_speech.value;
+            let speechjson = JSON.stringify({'speech' : speech})
+            $.ajax({
+                url:`/get/speech`,
+                type: 'POST',
+                contentType: 'application/json',
+                data: speechjson,
+                success: function(result) {
+                    document.getElementById('output').innerText = result;
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>
