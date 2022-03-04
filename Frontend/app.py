@@ -12,7 +12,7 @@ def home():
 def get_sentence():
     speech = request.get_json()['speech']
     statistics = requests.get(f'http://model:5000/toxic?values={speech}')
-    return jsonify(statistics)
+    return jsonify(statistics.text)
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8080)
