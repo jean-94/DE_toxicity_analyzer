@@ -21,11 +21,11 @@ alerting:
 scrape_configs:
   - job_name: 'model'
     static_configs:
-      - targets: ['model:5000']
-      
+      - targets: ['localhost:5000']
+
   - job_name: 'web'
     static_configs:
-      - targets: ['web:5001']
+      - targets: ['localhost:5001']
 
   - job_name: 'prometheus'
     scrape_interval: 10s
