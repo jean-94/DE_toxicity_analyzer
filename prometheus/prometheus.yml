@@ -12,7 +12,7 @@ rule_files:
 alerting:
   alertmanagers:
     - static_configs:
-        - targets: ["http://alertmanager:9091"]
+        - targets: ["alertmanager:9091"]
 
 
 

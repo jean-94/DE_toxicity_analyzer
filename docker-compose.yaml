@@ -42,4 +42,4 @@ services:
     command:
       - '--config.file=/etc/alertmanager/alertmanager.yml'
       - '--storage.path=/alertmanager'
-      - '--web.listen-address=http://alertmanager:9091'
+      - '--web.listen-address=alertmanager:9091'
