@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('startDockerCompose build') {
       steps {
-        sh 'pip --upgrade'
+        sh 'python -m pip install --upgrade pip'
         sh 'docker-compose build'
       }
     }
